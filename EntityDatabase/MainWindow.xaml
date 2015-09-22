@@ -1,9 +1,9 @@
 ﻿<Window x:Class="MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:departments="clr-namespace:Modules.Departments.Views"
+    xmlns:courses="clr-namespace:Modules.Courses.View"
     Title="MainWindow" Height="377" Width="568">
     <Grid>
-        <departments:DepartmentsList x:Name="DepartmenstUserControl"/>
+        <courses:CoursesList x:Name="CoursesUserControl"/>
     </Grid>
 </Window>

@@ -85,8 +85,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BusinessLogic\Helpers\ViewModelBase.vb" />
+    <Compile Include="BusinessLogic\Services\Implementations\OfficeAssignmentService.vb" />
+    <Compile Include="BusinessLogic\Services\Implementations\OnsiteCourseService.vb" />
+    <Compile Include="BusinessLogic\Services\Implementations\CourseService.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\DepartmentService.vb" />
+    <Compile Include="BusinessLogic\Services\Implementations\PersonService.vb" />
+    <Compile Include="BusinessLogic\Services\Implementations\StudentGradeService.vb" />
+    <Compile Include="BusinessLogic\Services\Interfaces\IOfficeAssignamentService.vb" />
+    <Compile Include="BusinessLogic\Services\Interfaces\IOnsiteCourseService.vb" />
+    <Compile Include="BusinessLogic\Services\Interfaces\ICourseService.vb" />
     <Compile Include="BusinessLogic\Services\Interfaces\IDepartmentService.vb" />
+    <Compile Include="BusinessLogic\Services\Interfaces\IPersonService.vb" />
+    <Compile Include="BusinessLogic\Services\Interfaces\IStudentGradeService.vb" />
     <Compile Include="BusinessLogic\Services\ServiceLocator.vb" />
     <Compile Include="BusinessObjects\Helpers\DataContext.vb" />
     <Compile Include="BusinessObjects\Models\Course.vb">
@@ -129,7 +139,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Modules\Courses\View\CoursesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\Departments\Views\DepartmentsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\OnsiteCourse\View\OnsiteCoursesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Persons\View\PersonsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\StudentGrade\View\StudentGradeList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,9 +180,26 @@
     <Import Include="System.Windows.Navigation" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\Courses\ViewModel\CoursesViewModel.vb" />
+    <Compile Include="Modules\Courses\View\CoursesList.xaml.vb">
+      <DependentUpon>CoursesList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Departments\ViewModels\DepartmentsViewModel.vb" />
     <Compile Include="Modules\Departments\Views\DepartmentsList.xaml.vb">
       <DependentUpon>DepartmentsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\OfficeAssignament\ViewModel\OfficeAssignamentViewModel.vb" />
+    <Compile Include="Modules\OnsiteCourse\ViewModel\OnsiteCoursesViewModel.vb" />
+    <Compile Include="Modules\OnsiteCourse\View\OnsiteCoursesList.xaml.vb">
+      <DependentUpon>OnsiteCoursesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Persons\ViewModels\PersonsViewModel.vb" />
+    <Compile Include="Modules\Persons\View\PersonsList.xaml.vb">
+      <DependentUpon>PersonsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\StudentGrade\ViewModel\StudentGradeViewModel.vb" />
+    <Compile Include="Modules\StudentGrade\View\StudentGradeList.xaml.vb">
+      <DependentUpon>StudentGradeList.xaml</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb">
       <SubType>Code</SubType>
@@ -210,6 +253,10 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Modules\OfficeAssignament\View\" />
+    <Folder Include="Modules\OnlineCourses\ViewModel\" />
+    <Folder Include="Modules\OnlineCourses\View\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

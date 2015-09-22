@@ -6,9 +6,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="348" d:DesignWidth="569">
     <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="107*"/>
+        </Grid.RowDefinitions>
         <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
                   ItemsSource="{Binding Departments}" Height="284" Width="512"
-                  AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
+                  AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="DepartmentIdColumn" Binding="{Binding Path=DepartmentID}" Header="ID" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="NameColumn" Binding="{Binding Path=Name}" Header="Name" Width="SizeToHeader"/>
