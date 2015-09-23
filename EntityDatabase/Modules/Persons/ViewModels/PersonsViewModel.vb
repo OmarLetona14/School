@@ -32,7 +32,7 @@ Namespace Modules.Persons.ViewModels
             ' Register service with ServiceLocator
             ServiceLocator.RegisterService(Of IPersonService)(New PersonService)
             ' Initialize dataAccess from service
-            Me.dataAccess = GetService(Of IDepartmentService)()
+            Me.dataAccess = GetService(Of IPersonService)()
             ' Populate departments property variable 
             For Each element In Me.GetAllPersons
                 Me._persons.Add(element)
