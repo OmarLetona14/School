@@ -15,7 +15,7 @@
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="CourseColumn" Binding="{Binding Path=CourseID}" Header="Course" Width="Auto"  />
-                <DataGridTextColumn x:Name="URLColumn" Binding="{Binding Path=URL}" Header="Name" Width="Auto"/>
+                <DataGridTextColumn x:Name="URLColumn" Binding="{Binding Path=URL}" Header="URL" Width="Auto"/>
     
             </DataGrid.Columns>
         </DataGrid>

@@ -18,6 +18,7 @@
                 <DataGridTextColumn x:Name="CourseIdColumn" Binding="{Binding Path=CourseID}" Header="ID" Width="Auto"/>
                 <DataGridTextColumn x:Name="TitleColumn" Binding="{Binding Path=Title}" Header="Title" Width="Auto"/>
                 <DataGridTextColumn x:Name="CreditsColumn" Binding="{Binding Path=Credits}" Header="Credits" Width="Auto"/>
+                <DataGridTextColumn x:Name="DepartmentColumn" Binding="{Binding Path=DepartmentID}" Header="Department" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
