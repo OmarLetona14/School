@@ -11,13 +11,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
-                  ItemsSource="{Binding Persons}" Height="284" Width="512"
+                  ItemsSource="{Binding Person}" Height="284" Width="512"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="PersonID" Binding="{Binding Path=PersonID}" Header="ID" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=FirstName}" Header="Fist Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=LastName}" Header="Last Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="HireDateColumn" Binding="{Binding Path=HireDate}" Header="Hire Date" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="PersonID" Binding="{Binding Path=PersonID}" Header="ID" Width="Auto"/>
+                <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=FirstName}" Header="Fist Name" Width="Auto"/>
+                <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=LastName}" Header="Last Name" Width="Auto"/>
+                <DataGridTextColumn x:Name="HireDateColumn" Binding="{Binding Path=HireDate}" Header="Hire Date" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

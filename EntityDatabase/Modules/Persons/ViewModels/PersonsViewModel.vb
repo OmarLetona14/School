@@ -11,13 +11,13 @@ Namespace Modules.Persons.ViewModels
         Private dataAccess As IPersonService
 
         'Implements Singlenton 
-        Public Property Persons As ObservableCollection(Of Person)
+        Public Property Person As ObservableCollection(Of Person)
             Get
                 Return Me._persons
             End Get
             Set(value As ObservableCollection(Of Person))
                 Me._persons = value
-                OnPropertyChanged("Persons")
+                OnPropertyChanged("Person")
             End Set
         End Property
 

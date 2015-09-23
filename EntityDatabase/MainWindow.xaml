@@ -44,7 +44,7 @@
 
             <TabItem Header="Online Courses" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" >
-                    
+                    <onlinecourses:OnlineCoursesList x:Name="OnlineCoursesUserControl"/>
                 </Grid>
             </TabItem>
         </TabControl>
