@@ -7,28 +7,28 @@ Namespace Modules.StudentGrade.ViewModel
     Public Class StudentGradeViewModel
         Inherits ViewModelBase
 
-        Private _studentgrade As ObservableCollection(Of StudentGrade)
+        Private _studentgrade As ObservableCollection(Of Global.StudentGrade)
         Private dataAccess As IStudentGradeService
 
         'Implements Singlenton 
-        Public Property StudentGrade As ObservableCollection(Of StudentGrade)
+        Public Property StudentGrade As ObservableCollection(Of Global.StudentGrade)
             Get
                 Return Me._studentgrade
             End Get
-            Set(value As ObservableCollection(Of StudentGrade))
+            Set(value As ObservableCollection(Of Global.StudentGrade))
                 Me._studentgrade = value
                 OnPropertyChanged("StudentGrade")
             End Set
         End Property
 
         ' Function to get all persons from service
-        Private Function GetAllStudentGrades() As IQueryable(Of StudentGrade)
+        Private Function GetAllStudentGrades() As IQueryable(Of Global.StudentGrade)
             Return Me.dataAccess.GetAllStudentGrades
         End Function
 
         Sub New()
             'Initialize property variable of persons
-            Me._studentgrade = New ObservableCollection(Of StudentGrade)
+            Me._studentgrade = New ObservableCollection(Of Global.StudentGrade)
             ' Register service with ServiceLocator
             ServiceLocator.RegisterService(Of IStudentGradeService)(New StudentGradeService)
             ' Initialize dataAccess from service

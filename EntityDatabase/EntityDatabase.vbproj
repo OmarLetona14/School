@@ -86,12 +86,14 @@
     </Compile>
     <Compile Include="BusinessLogic\Helpers\ViewModelBase.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\OfficeAssignmentService.vb" />
+    <Compile Include="BusinessLogic\Services\Implementations\OnlineCourseService.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\OnsiteCourseService.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\CourseService.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\DepartmentService.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\PersonService.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\StudentGradeService.vb" />
     <Compile Include="BusinessLogic\Services\Interfaces\IOfficeAssignamentService.vb" />
+    <Compile Include="BusinessLogic\Services\Interfaces\IOnlineCourseService.vb" />
     <Compile Include="BusinessLogic\Services\Interfaces\IOnsiteCourseService.vb" />
     <Compile Include="BusinessLogic\Services\Interfaces\ICourseService.vb" />
     <Compile Include="BusinessLogic\Services\Interfaces\IDepartmentService.vb" />
@@ -147,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Modules\OnlineCourses\View\OnlineCoursesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\OnsiteCourse\View\OnsiteCoursesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +195,10 @@
       <DependentUpon>DepartmentsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\OfficeAssignament\ViewModel\OfficeAssignamentViewModel.vb" />
+    <Compile Include="Modules\OnlineCourses\ViewModel\OnlineCoursesViewModel.vb" />
+    <Compile Include="Modules\OnlineCourses\View\OnlineCoursesList.xaml.vb">
+      <DependentUpon>OnlineCoursesList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\OnsiteCourse\ViewModel\OnsiteCoursesViewModel.vb" />
     <Compile Include="Modules\OnsiteCourse\View\OnsiteCoursesList.xaml.vb">
       <DependentUpon>OnsiteCoursesList.xaml</DependentUpon>
@@ -255,8 +265,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\OfficeAssignament\View\" />
-    <Folder Include="Modules\OnlineCourses\ViewModel\" />
-    <Folder Include="Modules\OnlineCourses\View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

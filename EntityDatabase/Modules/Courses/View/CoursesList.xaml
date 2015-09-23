@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"  
              d:DesignHeight="348" d:DesignWidth="569">
-    <Grid Name="MainGrid" Margin="10">
+    <Grid Name="MainGrid" >
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="305*"/>
