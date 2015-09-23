@@ -20,19 +20,18 @@ Namespace Modules.OnlineCourses.ViewModel
             End Set
         End Property
 
-        ' Function to get all departments from service
         Private Function GetAllOnlineService() As IQueryable(Of OnlineCourse)
             Return Me.dataAccess.GetAllOnlineCourses
         End Function
 
         Sub New()
-            'Initialize property variable of departments
+            'Initialize property variable of onlinecourses
             Me._onlinecourse = New ObservableCollection(Of OnlineCourse)
             ' Register service with ServiceLocator
             ServiceLocator.RegisterService(Of IOnlineCourseService)(New OnlineCourseService)
             ' Initialize dataAccess from service
-            Me.dataAccess = GetService(Of IDepartmentService)()
-            ' Populate departments property variable 
+            Me.dataAccess = GetService(Of IOnlineCourseService)()
+            ' Populate onlinecourse property variable 
             For Each element In Me.GetAllOnlineService
                 Me._onlinecourse.Add(element)
             Next

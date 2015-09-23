@@ -149,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Modules\OfficeAssignament\View\OfficeAssignmentsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\OnlineCourses\View\OnlineCoursesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +199,9 @@
       <DependentUpon>DepartmentsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\OfficeAssignament\ViewModel\OfficeAssignamentViewModel.vb" />
+    <Compile Include="Modules\OfficeAssignament\View\OfficeAssignmentsList.xaml.vb">
+      <DependentUpon>OfficeAssignmentsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\OnlineCourses\ViewModel\OnlineCoursesViewModel.vb" />
     <Compile Include="Modules\OnlineCourses\View\OnlineCoursesList.xaml.vb">
       <DependentUpon>OnlineCoursesList.xaml</DependentUpon>
@@ -263,8 +270,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\OfficeAssignament\View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -3,9 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:courses="clr-namespace:Modules.Courses.View"
     xmlns:departments="clr-namespace:Modules.Departments.Views"
-    xmlns:officeassignament="clr-namespace:Modules.OfficeAssignament.Views" 
+    xmlns:officeassignament="clr-namespace:Modules.OfficeAssignament.View" 
     xmlns:persons="clr-namespace:Modules.Persons.View" 
-    xmlns:onsitecourses="clr-namespace:Modules.OnsiteCourses.View" 
+    xmlns:onsitecourses="clr-namespace:Modules.OnsiteCourse.View" 
     xmlns:onlinecourses="clr-namespace:Modules.OnlineCourses.View" 
     xmlns:studentgrade="clr-namespace:Modules.StudentGrade.View" 
     Title="MainWindow" Height="400" Width="600">
@@ -13,14 +13,40 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="390" Margin="10,10,0,0" VerticalAlignment="Top" Width="590">
             <TabItem Header="Departments" Height="22" VerticalAlignment="Bottom" Margin="2,2,2,2">
                 <Grid Background="#FFE5E5E5">
-                    <courses:CoursesList x:Name="CoursesUserControl"/>
+                    <departments:DepartmentsList x:Name="DepartmentsUserControl"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Persons" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" >
                     <persons:PersonsList x:Name="PersonsUserControl"/>
-    </Grid>
-    </TabItem>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Courses" Height="24" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" >
+                    <courses:CoursesList x:Name="CoursesUserControl"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Student Grades" Height="24" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" >
+                    <studentgrade:StudentGradeList x:Name="StudentGradeUserControl"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Onsite courses" Height="24" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" >
+                    <onsitecourses:OnsiteCoursesList x:Name="OnsiteCoursesUserControl"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Office Assignment" Height="24" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" >
+                    <officeassignament:OfficeAssignmentsList x:Name="OfficeAssignemntUserControl"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Online Courses" Height="24" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" >
+                    
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>

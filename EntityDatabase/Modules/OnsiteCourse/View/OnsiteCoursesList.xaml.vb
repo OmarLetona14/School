@@ -1,4 +1,4 @@
-﻿Namespace Modules.OnsiteCourses.View
+﻿Namespace Modules.OnsiteCourse.View
     Public Class OnsiteCoursesList
 
     End Class
