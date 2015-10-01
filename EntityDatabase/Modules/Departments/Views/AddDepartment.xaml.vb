@@ -1,3 +1,5 @@
-﻿Public Class AddDepartment
+﻿Namespace Modules.Departments.Views
+    Public Class AddDepartment
 
-End Class
+    End Class
+End Namespace

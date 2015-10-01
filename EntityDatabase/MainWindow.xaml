@@ -8,7 +8,6 @@
     xmlns:onsitecourses="clr-namespace:Modules.OnsiteCourse.View" 
     xmlns:onlinecourses="clr-namespace:Modules.OnlineCourses.View" 
     xmlns:studentgrade="clr-namespace:Modules.StudentGrade.View" 
-    xmlns:cal="http://www.codeplex.com/CompositeWPF"
 
     Title="School System" Height="500" Width="700" ResizeMode="NoResize">
     <Grid>
@@ -16,41 +15,34 @@
             <TabItem Header="Departments" Height="22" VerticalAlignment="Bottom" Margin="2,2,2,2">
                 <Grid Background="#FFE5E5E5">
                     <departments:DepartmentsList x:Name="DepartmentsUserControl" HorizontalAlignment="Center"  VerticalAlignment="Top" />
-                    <Button x:Name="btnNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Editar" HorizontalAlignment="Left" Margin="420,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Cancelar" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
                 </Grid >
             </TabItem>
             <TabItem Header="Persons" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" >
                     <persons:PersonsList x:Name="PersonsUserControl"/>
-                    <Button Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Editar" HorizontalAlignment="Left" Margin="420,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Cancelar" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+                   
                 </Grid>
             </TabItem>
             <TabItem Header="Courses" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" >
-                    <courses:CoursesList x:Name="CoursesUserControl"  HorizontalAlignment="Center"  VerticalAlignment="Top" />
-                    <Button Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Editar" HorizontalAlignment="Left" Margin="420,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Cancelar" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="305*"/>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="364*"/>
+                    </Grid.ColumnDefinitions>
+                    <courses:CoursesList x:Name="CoursesUserControl"  HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="17,0" />
                 </Grid>
             </TabItem>
             <TabItem Header="Student Grades" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" >
                     <studentgrade:StudentGradeList x:Name="StudentGradeUserControl"  HorizontalAlignment="Center"  VerticalAlignment="Top" />
-                    <Button Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Editar" HorizontalAlignment="Left" Margin="420,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Cancelar" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+                  
                 </Grid>
             </TabItem>
             <TabItem Header="Onsite courses" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" >
                     <onsitecourses:OnsiteCoursesList x:Name="OnsiteCoursesUserControl"  HorizontalAlignment="Center"  VerticalAlignment="Top" />
-                    <Button Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Editar" HorizontalAlignment="Left" Margin="420,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Cancelar" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+                   
                 </Grid>
             </TabItem>
             <TabItem Header="Office Assignment" Height="24" VerticalAlignment="Top">
@@ -59,19 +51,15 @@
                         <RowDefinition Height="195*"/>
                         <RowDefinition Height="32*"/>
                     </Grid.RowDefinitions>
-                    <officeassignament:OfficeAssignmentsList x:Name="OfficeAssignemntUserControl"  HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="72,0" />
-                    <Button Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40" Grid.RowSpan="2"/>
-                    <Button Content="Editar" HorizontalAlignment="Left" Margin="420,350,0,0" VerticalAlignment="Top" Width="100" Height="40" Grid.RowSpan="2"/>
-                    <Button Content="Cancelar" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="100" Height="40" Grid.RowSpan="2"/>
+                    <officeassignament:OfficeAssignmentsList x:Name="OfficeAssignemntUserControl"  HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="10,0" Height="448" Grid.RowSpan="2" Width="664" />
+
                 </Grid>
             </TabItem>
 
             <TabItem Header="Online Courses" Height="24" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" >
                     <onlinecourses:OnlineCoursesList x:Name="OnlineCoursesUserControl" HorizontalAlignment="Center"  VerticalAlignment="Top" />
-                    <Button Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Editar" HorizontalAlignment="Left" Margin="420,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <Button Content="Cancelar" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+                    
                 </Grid>
             </TabItem>
         </TabControl>

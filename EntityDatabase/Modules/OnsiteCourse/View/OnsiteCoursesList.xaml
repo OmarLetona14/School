@@ -4,17 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="348" d:DesignWidth="569">
-    <Grid Name="MainGrid" >
-            <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
+             d:DesignHeight="450" d:DesignWidth="650">
+    <Grid Name="MainGrid" Height=" 450" Width=" 650">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="34*"/>
+        </Grid.RowDefinitions>
+        <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
                   ItemsSource="{Binding OnsiteCourses}" Height="284" Width="512"
-                  AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
-                <DataGrid.Columns>
+                  AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.RowSpan="2">
+            <DataGrid.Columns>
                 <DataGridTextColumn x:Name="CourseColum" Binding="{Binding Path=Course.Title}" Header="Course" Width="Auto"/>
                 <DataGridTextColumn x:Name="LocationColum" Binding="{Binding Path=Location}" Header="Location" Width="Auto"/>
                 <DataGridTextColumn x:Name="DaysColum" Binding="{Binding Path=Days}" Header="Days" Width="Auto"/>
                 <DataGridTextColumn x:Name="TimeColum" Binding="{Binding Path=Time}" Header="Time" Width="Auto"/>
             </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+        </DataGrid>
+        <Grid  HorizontalAlignment="Left" Height="135" Grid.Row="1"  VerticalAlignment="Top"  Width="640" Margin="0,52,0,0">
+            <Button x:Name="btnNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="232,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+            <Button Content="Editar" HorizontalAlignment="Left" Margin="359,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+            <Button Content="Cancelar" Margin="488,71,27,0" VerticalAlignment="Top" Height="40"/>
+        </Grid >
+    </Grid>
 </UserControl>

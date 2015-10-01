@@ -1,3 +1,5 @@
-﻿Public Class AddStudentGrade
+﻿Namespace Modules.StudentGrade.View
+    Public Class AddStudentGrade
 
-End Class
+    End Class
+End Namespace

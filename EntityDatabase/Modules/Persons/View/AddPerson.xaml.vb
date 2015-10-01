@@ -1,3 +1,5 @@
-﻿Public Class AddPerson
+﻿Namespace Modules.Persons.View
+    Public Class AddPerson
 
-End Class
+    End Class
+End Namespace

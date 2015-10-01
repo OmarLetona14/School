@@ -102,6 +102,7 @@
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BusinessLogic\Helpers\RelayCommand.vb" />
     <Compile Include="BusinessLogic\Helpers\ViewModelBase.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\OfficeAssignmentService.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\OnlineCourseService.vb" />
@@ -165,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\Courses\View\CoursesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Courses\View\EditCourse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +249,9 @@
     </Compile>
     <Compile Include="Modules\Courses\View\CoursesList.xaml.vb">
       <DependentUpon>CoursesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Courses\View\EditCourse.xaml.vb">
+      <DependentUpon>EditCourse.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Departments\ViewModels\DepartmentsViewModel.vb" />
     <Compile Include="Modules\Departments\Views\AddDepartment.xaml.vb">

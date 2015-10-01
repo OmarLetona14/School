@@ -34,7 +34,7 @@ Namespace Modules.Courses.ViewModel
         End Function
 
         Sub New()
-            'Initialize property variable of departments
+            'Initialize property variable of courses
             Me._courses = New ObservableCollection(Of Course)
             ' Register service with ServiceLocator
             ServiceLocator.RegisterService(Of ICourseService)(New CourseService)

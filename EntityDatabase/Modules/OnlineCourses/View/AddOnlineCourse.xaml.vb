@@ -1,3 +1,6 @@
-﻿Public Class AddOnlineCourse
+﻿Namespace Modules.OnlineCourses.View
 
-End Class
+    Public Class AddOnlineCourse
+
+    End Class
+End Namespace

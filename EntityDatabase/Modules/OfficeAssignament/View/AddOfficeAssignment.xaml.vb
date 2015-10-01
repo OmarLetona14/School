@@ -1,3 +1,6 @@
-﻿Public Class AddOfficeAssignment
+﻿Namespace Modules.OfficeAssignament.View
 
-End Class
+    Public Class AddOfficeAssignment
+
+    End Class
+End Namespace

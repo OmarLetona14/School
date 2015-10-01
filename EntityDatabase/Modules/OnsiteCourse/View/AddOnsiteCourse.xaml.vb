@@ -1,3 +1,5 @@
-﻿Public Class AddOnsiteCourse
+﻿Namespace Modules.OnsiteCourse.View
+    Public Class AddOnsiteCourse
 
-End Class
+    End Class
+End Namespace
