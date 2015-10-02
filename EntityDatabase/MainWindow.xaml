@@ -9,28 +9,16 @@
     xmlns:onlinecourses="clr-namespace:Modules.OnlineCourses.View" 
     xmlns:studentgrade="clr-namespace:Modules.StudentGrade.View" 
     xmlns:cal="http://www.codeplex.com/CompositeWPF"
-    xmlns:Regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"
+
     Title="School System" Height="500" Width="700" ResizeMode="NoResize">
     <Grid>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="490" Margin="0,0,0,0" VerticalAlignment="Top" Width="690">
             <TabItem Header="Departments" Height="22" VerticalAlignment="Bottom" Margin="2,2,2,2">
                 <Grid Background="#FFE5E5E5">
                     <departments:DepartmentsList x:Name="DepartmentsUserControl" HorizontalAlignment="Center"  VerticalAlignment="Top" />
-                    <Button Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+                    <Button x:Name="btnNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
                     <Button Content="Editar" HorizontalAlignment="Left" Margin="420,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
                     <Button Content="Cancelar" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-                    <ItemsControl Name=""
-                      cal:RegionManager.RegionName=""
-                      VerticalAlignment="Top"  Grid.RowSpan="2"
-                      Height="26" HorizontalAlignment="Left"
-                      Margin="0,12,0,0"/>
-                    <Grid Margin="4,4,4,4" Grid.Row="1">
-                        <Border Margin="0,0,0,0" Grid.Row="1">
-                            <ItemsControl Name="MainRegion"
-                              cal:RegionManager.RegionName="MainRegion" 
-                                      Margin="4" Height="291" />
-                        </Border >
-                    </Grid>
                 </Grid >
             </TabItem>
             <TabItem Header="Persons" Height="24" VerticalAlignment="Top">

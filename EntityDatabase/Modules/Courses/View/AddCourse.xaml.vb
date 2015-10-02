@@ -1,3 +1,5 @@
-﻿Public Class AddCourse
+﻿Namespace Modules.Courses.View
+    Public Class AddCourse
 
-End Class
+    End Class
+End Namespace

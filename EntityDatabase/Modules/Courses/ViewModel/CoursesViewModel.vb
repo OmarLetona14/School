@@ -2,11 +2,18 @@
 Imports BusinessLogic.Services.Implementations
 Imports BusinessLogic.Services.Interfaces
 Imports System.Collections.ObjectModel
+Imports Microsoft.Practices.Prism.Regions
+Imports Microsoft.Practices.Unity
+Imports Microsoft.Practices.Prism.UnityExtensions
+Imports Microsoft.Practices.Prism.Commands
+Imports Microsoft.Practices.Prism.Events
+Imports Modules.Courses.View
 
 Namespace Modules.Courses.ViewModel
 
     Public Class CoursesViewModel
         Inherits ViewModelBase
+
 
         Private _courses As ObservableCollection(Of Course)
         Private dataAccess As ICourseService
@@ -37,6 +44,7 @@ Namespace Modules.Courses.ViewModel
             For Each element In Me.GetAllCourses
                 Me._courses.Add(element)
             Next
+
         End Sub
     End Class
 End Namespace
