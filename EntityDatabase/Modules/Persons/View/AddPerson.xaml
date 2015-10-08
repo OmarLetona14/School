@@ -5,19 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="350">
-    <Grid>
+    <Grid x:Name="Grid">
         <Label x:Name="lblShowPersonID" Content="Person ID" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Width="70"/>
-        <DataGrid x:Name="dataGrid"  HorizontalAlignment="Left" Margin="155,33,0,0" VerticalAlignment="Top" Width="90" Height="20" />
-        <Label x:Name="lblPersonID" Content="" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox  x:Name="lblPersonID" Text="{Binding idPerson}" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="lblShowLastName" Content="LastName" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtLastName" Text="" HorizontalAlignment="Left" Margin="130,70,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="txtLastName" Text="{Binding LastName}" HorizontalAlignment="Left" Margin="130,70,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="lblShowFirstName" Content="FirstName" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtFirstName" Text="" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="txtFirstName" Text="{Binding FirstName}" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="lblShowHireDate" Content="HireDate" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtHireDate" Text="" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="txtHireDate" Text="{Binding HireDate}" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="lblShowEnrollmentDate" Content="EnrollmentDate" HorizontalAlignment="Left" Margin="50,190,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtEnrollmentDate" Text="" HorizontalAlignment="Left" Margin="130,190,0,0" VerticalAlignment="Top" Width="140"/>
-        <Button x:Name="btnAcept" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox Text="{Binding EnrollmentDate}"  x:Name="txtEnrollmentDate" HorizontalAlignment="Left" Margin="130,190,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button Command="{Binding ButtonCreateNewPerson}" x:Name="btnAcept" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ButtonExit}" x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

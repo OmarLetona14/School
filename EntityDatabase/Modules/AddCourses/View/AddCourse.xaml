@@ -15,6 +15,6 @@
         <Label Content="Department" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="90"/>
         <ComboBox SelectedItem="{Binding Department}" ItemsSource="{Binding Departments}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="130,160,0,0" VerticalAlignment="Top" Width="140" Height="20" />
         <Button Content="Aceptar" Command="{Binding CreateButtonCommand}" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Cancelar" Command="{Binding ExitEditor}" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cancelar" Command="{Binding ButtonExit}" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

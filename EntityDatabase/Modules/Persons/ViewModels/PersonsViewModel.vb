@@ -2,6 +2,8 @@
 Imports BusinessLogic.Services.Implementations
 Imports BusinessLogic.Services.Interfaces
 Imports System.Collections.ObjectModel
+Imports BusinessObjects.Helpers
+
 Imports Modules.Persons.View
 
 Namespace Modules.Persons.ViewModels
@@ -10,7 +12,11 @@ Namespace Modules.Persons.ViewModels
 
         Private _persons As ObservableCollection(Of Person)
         Private dataAccess As IPersonService
+        Private _selectedRow As Person
         Private _icomButtonNewWindowCommand As ICommand
+        Public Shadows _newWindow As AddPerson
+        Private _icomButtonDeleteCommand As ICommand
+        Private _icomButtonEditCommand As ICommand
 
         'Implements Singlenton 
         Public Property Person As ObservableCollection(Of Person)
@@ -23,14 +29,67 @@ Namespace Modules.Persons.ViewModels
             End Set
         End Property
 
+
+        Public Property DeleteButton As ICommand
+            Get
+                If _icomButtonDeleteCommand Is Nothing Then
+                    _icomButtonDeleteCommand = New RelayCommand(AddressOf Delete)
+                End If
+                Return _icomButtonDeleteCommand
+            End Get
+            Set(value As ICommand)
+                _icomButtonDeleteCommand = value
+            End Set
+        End Property
+
+        Public ReadOnly Property EditButtonCommand As ICommand
+            Get
+                If Me._icomButtonEditCommand Is Nothing Then
+                    Me._icomButtonEditCommand = New RelayCommand(AddressOf EditPerson)
+                End If
+                Return Me._icomButtonEditCommand
+            End Get
+        End Property
+
+        Sub EditPerson()
+            If SelectedPerson IsNot Nothing Then
+                Using context As New SchoolEntities
+                    _newWindow = New AddPerson(SelectedPerson)
+                    _newWindow.ShowDialog()
+                    actualizarLista()
+                End Using
+            Else
+                MessageBox.Show("Por favor, seleccione una persona")
+            End If
+        End Sub
+        Sub Delete()
+            Try
+                If SelectedPerson IsNot Nothing Then
+                    DataContext.DBEntities.People.Remove((From p In DataContext.DBEntities.People
+                                                          Where p.PersonID = SelectedPerson.PersonID
+                                                          Select p).FirstOrDefault)
+                    DataContext.DBEntities.SaveChanges()
+                    actualizarLista()
+                Else
+                    MessageBox.Show("Debe seleccionar una persona")
+                End If
+            Catch ex As Exception
+
+            End Try
+
+        End Sub
+        Sub New()
+            Me._persons = New ObservableCollection(Of Person)
+            actualizarLista()
+        End Sub
+
         ' Function to get all persons from service
         Private Function GetAllPersons() As IQueryable(Of Person)
             Return Me.dataAccess.GetAllPersons
         End Function
 
-        Sub New()
-            'Initialize property variable of persons
-            Me._persons = New ObservableCollection(Of Person)
+        Sub actualizarLista()
+            _persons.Clear()
             ' Register service with ServiceLocator
             ServiceLocator.RegisterService(Of IPersonService)(New PersonService)
             ' Initialize dataAccess from service
@@ -43,21 +102,26 @@ Namespace Modules.Persons.ViewModels
         Public ReadOnly Property ButtonShowNewWindow()
             Get
                 If Me._icomButtonNewWindowCommand Is Nothing Then
-                    Me._icomButtonNewWindowCommand = New RelayCommand(AddressOf VentanaDiag)
+                    Me._icomButtonNewWindowCommand = New RelayCommand(AddressOf AddOPersonToDB)
                 End If
                 Return Me._icomButtonNewWindowCommand
             End Get
         End Property
-
-        Private Sub VentanaDiag()
-            Dim ventanaNueva As New AddPerson
-            ventanaNueva.Height = 350
-            ventanaNueva.Width = 350
-            ventanaNueva.ResizeMode = ResizeMode.NoResize
-            ventanaNueva.VerticalAlignment = VerticalAlignment.Center
-            ventanaNueva.HorizontalAlignment = HorizontalAlignment.Center
-
-            ventanaNueva.ShowDialog()
+        Public Property SelectedPerson As Person
+            Get
+                Return _selectedRow
+            End Get
+            Set(value As Person)
+                _selectedRow = value
+                OnPropertyChanged("SelectedPerson")
+            End Set
+        End Property
+        Sub AddOPersonToDB()
+            Using school As New SchoolEntities
+                _newWindow = New AddPerson
+                _newWindow.ShowDialog()
+                actualizarLista()
+            End Using
         End Sub
 
     End Class

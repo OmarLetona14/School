@@ -11,7 +11,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
-                  ItemsSource="{Binding Person}" Height="284" Width="512"
+                  ItemsSource="{Binding Person}" Height="284" Width="512" SelectedItem="{Binding SelectedPerson}"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="PersonID" Binding="{Binding Path=PersonID}" Header="Person ID" Width="Auto"/>
@@ -23,8 +23,8 @@
         </DataGrid>
         <Grid  HorizontalAlignment="Left" Height="135" Margin="0,301,0,0"  VerticalAlignment="Top" Width="640">
             <Button Command="{Binding ButtonShowNewWindow }"  Content="Nuevo" HorizontalAlignment="Left" Margin="232,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-            <Button Content="Editar" HorizontalAlignment="Left" Margin="359,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-            <Button Content="Cancelar" Command="{Binding ExitEditor}" Margin="488,71,27,0" VerticalAlignment="Top" Height="40"/>
+            <Button Command="{Binding EditButtonCommand}" Content="Editar" HorizontalAlignment="Left" Margin="359,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+            <Button Content="Eliminar" Command="{Binding DeleteButton}" Margin="488,71,27,0" VerticalAlignment="Top" Height="40"/>
         </Grid >
     </Grid>
 </UserControl>

@@ -283,6 +283,7 @@
     <Compile Include="Modules\OnsiteCourse\View\OnsiteCoursesList.xaml.vb">
       <DependentUpon>OnsiteCoursesList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Persons\ViewModels\AddPersonViewModel.vb" />
     <Compile Include="Modules\Persons\ViewModels\PersonsViewModel.vb" />
     <Compile Include="Modules\Persons\View\AddPerson.xaml.vb">
       <DependentUpon>AddPerson.xaml</DependentUpon>
