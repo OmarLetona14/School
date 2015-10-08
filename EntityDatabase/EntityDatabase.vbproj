@@ -291,6 +291,7 @@
     <Compile Include="Modules\Persons\View\PersonsList.xaml.vb">
       <DependentUpon>PersonsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\StudentGrade\ViewModel\AddStudentGradeViewModel.vb" />
     <Compile Include="Modules\StudentGrade\ViewModel\StudentGradeViewModel.vb" />
     <Compile Include="Modules\StudentGrade\View\AddStudentGrade.xaml.vb">
       <DependentUpon>AddStudentGrade.xaml</DependentUpon>
