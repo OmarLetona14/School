@@ -52,6 +52,12 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.PowerShell">
+      <HintPath>..\packages\EntityFramework.5.0.0\tools\EntityFramework.PowerShell.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.PowerShell.Utility">
+      <HintPath>..\packages\EntityFramework.5.0.0\tools\EntityFramework.PowerShell.Utility.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\packages\Prism4\Bin\Desktop\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
@@ -156,20 +162,15 @@
     <Compile Include="BusinessObjects\Models\StudentGrade.vb">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infraestructure\RegionNames.vb" />
     <Compile Include="MainWindow.xaml.vb">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Modules\Courses\View\AddCourse.xaml">
+    <Page Include="Modules\AddCourses\View\AddCourse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\Courses\View\CoursesList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Modules\Courses\View\EditCourse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,17 +243,15 @@
     <Import Include="System.Windows.Navigation" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modules\Courses\ViewModel\AddCourseViewModel.vb" />
+    <Compile Include="Modules\AddCourses\ViewModel\AddCourseViewModel.vb" />
     <Compile Include="Modules\Courses\ViewModel\CoursesViewModel.vb" />
-    <Compile Include="Modules\Courses\View\AddCourse.xaml.vb">
+    <Compile Include="Modules\AddCourses\View\AddCourse.xaml.vb">
       <DependentUpon>AddCourse.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Courses\View\CoursesList.xaml.vb">
       <DependentUpon>CoursesList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Courses\View\EditCourse.xaml.vb">
-      <DependentUpon>EditCourse.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Modules\Departments\ViewModels\AddDepartmentsViewModel.vb" />
     <Compile Include="Modules\Departments\ViewModels\DepartmentsViewModel.vb" />
     <Compile Include="Modules\Departments\Views\AddDepartment.xaml.vb">
       <DependentUpon>AddDepartment.xaml</DependentUpon>
@@ -260,6 +259,7 @@
     <Compile Include="Modules\Departments\Views\DepartmentsList.xaml.vb">
       <DependentUpon>DepartmentsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\OfficeAssignament\ViewModel\AddOfficeAssignmentViewModel.vb" />
     <Compile Include="Modules\OfficeAssignament\ViewModel\OfficeAssignamentViewModel.vb" />
     <Compile Include="Modules\OfficeAssignament\View\AddOfficeAssignment.xaml.vb">
       <DependentUpon>AddOfficeAssignment.xaml</DependentUpon>
@@ -267,6 +267,7 @@
     <Compile Include="Modules\OfficeAssignament\View\OfficeAssignmentsList.xaml.vb">
       <DependentUpon>OfficeAssignmentsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\OnlineCourses\ViewModel\AddOnlineCourseViewModel.vb" />
     <Compile Include="Modules\OnlineCourses\ViewModel\OnlineCoursesViewModel.vb" />
     <Compile Include="Modules\OnlineCourses\View\AddOnlineCourse.xaml.vb">
       <DependentUpon>AddOnlineCourse.xaml</DependentUpon>
@@ -274,6 +275,7 @@
     <Compile Include="Modules\OnlineCourses\View\OnlineCoursesList.xaml.vb">
       <DependentUpon>OnlineCoursesList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\OnsiteCourse\ViewModel\AddOnsiteCourseViewModel.vb" />
     <Compile Include="Modules\OnsiteCourse\ViewModel\OnsiteCoursesViewModel.vb" />
     <Compile Include="Modules\OnsiteCourse\View\AddOnsiteCourse.xaml.vb">
       <DependentUpon>AddOnsiteCourse.xaml</DependentUpon>
@@ -347,6 +349,8 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Infraestructure\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

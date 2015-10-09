@@ -5,19 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="350">
-    <Grid>
-        <Label x:Name="lblShowDepartmentID" Content="Department ID" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Width="90"/>
-        <Label x:Name="lblDepartmentID" HorizontalAlignment="Left" Margin="150,30,0,0" VerticalAlignment="Top" Width="90" Height="20"/>
-        <Label x:Name="lblShowName" Content="Name" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtName" Text="" HorizontalAlignment="Left" Margin="130,70,0,0" VerticalAlignment="Top" Width="140" Height=" 20"/>
-        <Label x:Name="lblShowBudget" Content="Budget" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtBudget" Text="" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Width="140" Height=" 20"/>
-        <DataGrid x:Name="dataGrid"  HorizontalAlignment="Left" Margin="155,33,0,0" VerticalAlignment="Top" Width="90" Height="20" />
-        <Label x:Name="lblShowStartDate" Content="Start date" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtStartDate" Text="" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="140" Height=" 20"/>
-        <Label x:Name="lblShowAdministrator" Content="Administrator" HorizontalAlignment="Left" Margin="50,190,0,0" VerticalAlignment="Top" Width="90"/>
-        <ComboBox  x:Name="txtBoxAdministrator"  HorizontalAlignment="Left" Margin="140,190,0,0" VerticalAlignment="Top" Width="140" Height="20" />
-        <Button x:Name="btnAcept" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
+    <Grid Name="Grid">
+        <Label  Content="Department ID" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Width="90"/>
+        <Label  Content="{Binding IdDepartments}" HorizontalAlignment="Left" Margin="150,30,0,0" VerticalAlignment="Top" Width="90" Height="20"/>
+        <Label  Content="Name" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Width="70"/>
+        <TextBox  Text="{Binding Name}" HorizontalAlignment="Left" Margin="130,70,0,0" VerticalAlignment="Top" Width="140" Height=" 20"/>
+        <Label  Content="Budget" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top" Width="70"/>
+        <TextBox Text="{Binding Budgets}" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Width="140" Height=" 20"/>
+        <Label  Content="Start date" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="70"/>
+        <TextBox  Text="{Binding Date}" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="140" Height=" 20"/>
+        <Label  Content="Administrator" HorizontalAlignment="Left" Margin="50,190,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox   HorizontalAlignment="Left" Margin="140,190,0,0" VerticalAlignment="Top" Width="140" Height="20" />
+        <Button Command="{Binding ButtonCreateDepartment}" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ButtonExit}" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

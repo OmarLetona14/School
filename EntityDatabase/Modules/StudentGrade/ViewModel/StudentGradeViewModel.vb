@@ -2,6 +2,7 @@
 Imports BusinessLogic.Services.Implementations
 Imports BusinessLogic.Services.Interfaces
 Imports System.Collections.ObjectModel
+Imports Modules.StudentGrade.View
 
 Namespace Modules.StudentGrade.ViewModel
     Public Class StudentGradeViewModel
@@ -9,6 +10,7 @@ Namespace Modules.StudentGrade.ViewModel
 
         Private _studentgrade As ObservableCollection(Of Global.StudentGrade)
         Private dataAccess As IStudentGradeService
+        Private _icomButtonNewWindowCommand As ICommand
 
         'Implements Singlenton 
         Public Property StudentGrade As ObservableCollection(Of Global.StudentGrade)
@@ -29,6 +31,7 @@ Namespace Modules.StudentGrade.ViewModel
         Sub New()
             'Initialize property variable of persons
             Me._studentgrade = New ObservableCollection(Of Global.StudentGrade)
+
             ' Register service with ServiceLocator
             ServiceLocator.RegisterService(Of IStudentGradeService)(New StudentGradeService)
             ' Initialize dataAccess from service
@@ -37,6 +40,26 @@ Namespace Modules.StudentGrade.ViewModel
             For Each element In Me.GetAllStudentGrades
                 Me._studentgrade.Add(element)
             Next
+        End Sub
+
+        Public ReadOnly Property ButtonShowNewWindow()
+            Get
+                If Me._icomButtonNewWindowCommand Is Nothing Then
+                    Me._icomButtonNewWindowCommand = New RelayCommand(AddressOf VentanaDiag)
+                End If
+                Return Me._icomButtonNewWindowCommand
+            End Get
+        End Property
+
+        Private Sub VentanaDiag()
+            Dim ventanaNueva As New AddStudentGrade
+            ventanaNueva.Height = 350
+            ventanaNueva.Width = 350
+            ventanaNueva.ResizeMode = ResizeMode.NoResize
+            ventanaNueva.VerticalAlignment = VerticalAlignment.Center
+            ventanaNueva.HorizontalAlignment = HorizontalAlignment.Center
+
+            ventanaNueva.ShowDialog()
         End Sub
     End Class
 End Namespace

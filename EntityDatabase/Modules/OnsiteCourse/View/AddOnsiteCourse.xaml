@@ -7,14 +7,14 @@
              d:DesignHeight="350" d:DesignWidth="350">
     <Grid>
         <Label x:Name="lblShowCourse" Content="Course" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Width="70"/>
-        <ComboBox  x:Name="txtBoxCourse"  HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="140" Height="20" />
+        <ComboBox SelectedValuePath="idCourse" SelectedValue="{Binding Courses}" ItemsSource="{Binding Courses}" DisplayMemberPath="Courses.Name" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="140" Height="20" />
         <Label x:Name="lblShowLocation" Content="Location" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Width="70"/>
         <TextBox x:Name="txtLocation" Text="" HorizontalAlignment="Left" Margin="130,70,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="lblShowDays" Content="Days" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top" Width="70"/>
         <TextBox x:Name="txtDay" Text="" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="lblShowTime" Content="Time" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="70"/>
         <TextBox x:Name="txtTime" Text="" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="140"/>
-        <Button x:Name="btnAcept" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ButtonCreateOnsiteCourse}" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ButtonExit}" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

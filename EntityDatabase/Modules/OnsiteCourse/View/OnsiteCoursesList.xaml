@@ -21,9 +21,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <Grid  HorizontalAlignment="Left" Height="135" Grid.Row="1"  VerticalAlignment="Top"  Width="640" Margin="0,52,0,0">
-            <Button x:Name="btnNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="232,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+            <Button Command="{Binding ButtonShowNewWindow }"  Content="Nuevo" HorizontalAlignment="Left" Margin="232,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
             <Button Content="Editar" HorizontalAlignment="Left" Margin="359,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-            <Button Content="Cancelar" Margin="488,71,27,0" VerticalAlignment="Top" Height="40"/>
+            <Button Content="Cancelar" Command="{Binding ExitEditor}" Margin="488,71,27,0" VerticalAlignment="Top" Height="40"/>
         </Grid >
     </Grid>
 </UserControl>

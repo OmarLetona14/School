@@ -7,11 +7,11 @@
              d:DesignHeight="350" d:DesignWidth="350">
     <Grid>
         <Label x:Name="lblShowCourse" Content="Course" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Width="70"/>
-        <ComboBox  x:Name="txtBoxCourse"  HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="140" Height="20" />
+        <ComboBox  HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="140" Height="20" />
         <Label x:Name="lblShowURL" Content="URL" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Width="70"/>
         <TextBox x:Name="txtURL" Text="" HorizontalAlignment="Left" Margin="130,70,0,0" VerticalAlignment="Top" Width="140"/>
-        <Button x:Name="btnAcept" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button  Command="{Binding ButtonCreateOnlineCourse}" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ButtonExit}" x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

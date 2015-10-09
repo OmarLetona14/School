@@ -1,16 +1,16 @@
-﻿Namespace Modules.OfficeAssignament.View
+﻿Imports Modules.OfficeAssignament.ViewModel
+
+Namespace Modules.OfficeAssignament.View
     Public Class OfficeAssignmentsList
-        Private Sub btnNuevo_Click(sender As Object, e As RoutedEventArgs) Handles btnNuevo.Click
-            Dim ventanaNueva As New AddOfficeAssignment
-            ventanaNueva.Height = 350
-            ventanaNueva.Width = 350
-            ventanaNueva.ResizeMode = ResizeMode.NoResize
-            ventanaNueva.VerticalAlignment = VerticalAlignment.Center
-            ventanaNueva.HorizontalAlignment = HorizontalAlignment.Center
-
-            ventanaNueva.ShowDialog()
-
-
+        Public Sub New()
+            InitializeComponent()
+            Me.DataContext = New AddOfficeAssignmentViewModel()
         End Sub
+
+        Public ReadOnly Property ViewModel As AddOfficeAssignmentViewModel
+            Get
+                Return DirectCast(Me.DataContext, AddOfficeAssignmentViewModel)
+            End Get
+        End Property
     End Class
 End Namespace

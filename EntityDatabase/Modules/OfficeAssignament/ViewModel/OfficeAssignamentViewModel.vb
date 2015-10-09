@@ -2,6 +2,7 @@
 Imports BusinessLogic.Services.Implementations
 Imports BusinessLogic.Services.Interfaces
 Imports System.Collections.ObjectModel
+Imports Modules.OfficeAssignament.View
 
 Namespace Modules.OfficeAssignament.ViewModel
     Public Class OfficeAssignamentViewModel
@@ -10,6 +11,8 @@ Namespace Modules.OfficeAssignament.ViewModel
 
         Private _officeassignaments As ObservableCollection(Of Global.OfficeAssignment)
         Private dataAccess As IOfficeAssignamentService
+        Private _icomButtonExitCommand As ICommand
+        Private _icomButtonNewWindowCommand As ICommand
 
         'Implements Singlenton 
         Public Property OfficeAssignament As ObservableCollection(Of Global.OfficeAssignment)
@@ -39,5 +42,26 @@ Namespace Modules.OfficeAssignament.ViewModel
                 Me._officeassignaments.Add(element)
             Next
         End Sub
+        Public ReadOnly Property ButtonShowNewWindow()
+            Get
+                If Me._icomButtonNewWindowCommand Is Nothing Then
+                    Me._icomButtonNewWindowCommand = New RelayCommand(AddressOf VentanaDiag)
+                End If
+                Return Me._icomButtonNewWindowCommand
+            End Get
+        End Property
+
+        Private Sub VentanaDiag()
+            Dim ventanaNueva As New AddOfficeAssignment
+            ventanaNueva.Height = 350
+            ventanaNueva.Width = 350
+            ventanaNueva.ResizeMode = ResizeMode.NoResize
+            ventanaNueva.VerticalAlignment = VerticalAlignment.Center
+            ventanaNueva.HorizontalAlignment = HorizontalAlignment.Center
+
+            ventanaNueva.ShowDialog()
+        End Sub
+
+
     End Class
 End Namespace
