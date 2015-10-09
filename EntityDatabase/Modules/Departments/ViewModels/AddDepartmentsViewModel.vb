@@ -9,130 +9,141 @@ Namespace Modules.Departments.ViewModels
 
     Public Class AddDepartmentsViewModel
         Inherits ViewModelBase
+        Private _Department As New Department
+        Private _newView As AddDepartment
+        Private _idDepartment As String
+        Private _Name As String
+        Private _Budget As Decimal
+        Private _date As Date = Today
+        Private _Admin As Integer = 1
+        Private departEdit As Department
+        Private _acceptCommand As ICommand
+        Private _cancelCommand As ICommand
 
-        Public addDepartmentWindow As AddDepartment
-        Private _idDepartment As Integer
-        Private _idAdministrator As Integer
-        Private _selectedAdministrator As String
-        Private _name As String
-        Private newWindowDepartment As AddDepartment
-        Private _budget As String
-        Private _department As New Department
-        Private _startDate As Date
-        Private dataAccess As IDepartmentService
-        Private _icomButtonAddCommand As ICommand
-        Private _icomButtonExitCommand As ICommand
 
-        Public Property IdDepartments As Integer
+        Public Property idDepartment As Integer
             Get
                 Return Me._idDepartment
             End Get
             Set(value As Integer)
                 Me._idDepartment = value
-                OnPropertyChanged("IdDepartments")
+                _Department.DepartmentID = _idDepartment
+                OnPropertyChanged("idDepartment")
             End Set
         End Property
-
-        Public Property IdAdministrators As Integer
-            Get
-                Return Me._idAdministrator
-            End Get
-            Set(value As Integer)
-                Me._idAdministrator = value
-                OnPropertyChanged("IdAdministrators")
-            End Set
-        End Property
-
-        Public Property SelectedAdministrator As String
-            Get
-                Return Me._selectedAdministrator
-            End Get
-            Set(value As String)
-                Me._selectedAdministrator = value
-                OnPropertyChanged("SelectedAdministrator")
-            End Set
-        End Property
-
         Public Property Name As String
             Get
-                Return Me._name
+                Return Me._Name
             End Get
             Set(value As String)
-                Me._name = value
+                Me._Name = value
+                _Department.Name = _Name
                 OnPropertyChanged("Name")
             End Set
         End Property
 
-        Public Property Budgets As String
+        Public Property Budgets As Decimal
             Get
-                Return Me._budget
+                Return Me._Budget
             End Get
-            Set(value As String)
-                Me._budget = value
+            Set(value As Decimal)
+                Me._Budget = value
+                _Department.Budget = _Budget
                 OnPropertyChanged("Budgets")
             End Set
         End Property
 
-        Public Property StartDate As Date
+        Public Property Dates As Date
             Get
-                Return Me._startDate
+                Return Me._date
             End Get
             Set(value As Date)
-                Me._startDate = value
-                OnPropertyChanged("StartDate")
+                Me._date = value
+                _Department.StartDate = _date
+                OnPropertyChanged("Dates")
             End Set
         End Property
 
-        Public ReadOnly Property ButtonCreateDepartment()
+        Public Property Administrator As Integer
             Get
-                If Me._icomButtonAddCommand Is Nothing Then
-                    Me._icomButtonAddCommand = New RelayCommand(AddressOf CreateNewDepartment)
+                Return Me._Admin
+            End Get
+            Set(value As Integer)
+                Me._Admin = value
+                _Department.Administrator = _Admin
+                OnPropertyChanged("Administrator")
+            End Set
+        End Property
+        Public ReadOnly Property ButtonCreateDepartment As ICommand
+            Get
+                If Me._acceptCommand Is Nothing Then
+                    Me._acceptCommand = New RelayCommand(AddressOf AcceptExecute)
                 End If
-                Return Me._icomButtonAddCommand
+                Return Me._acceptCommand
             End Get
         End Property
 
-        Public ReadOnly Property ButtonExit()
+        Public ReadOnly Property CancelButton As ICommand
             Get
-                If Me._icomButtonExitCommand Is Nothing Then
-                    Me._icomButtonExitCommand = New RelayCommand(AddressOf ExitEditor)
+                If Me._cancelCommand Is Nothing Then
+                    Me._cancelCommand = New RelayCommand(AddressOf ExitEditor)
                 End If
-                Return Me._icomButtonExitCommand
+                Return Me._cancelCommand
             End Get
         End Property
 
         Public Sub ExitEditor()
             Dim respuesta As String = MsgBox("¿Está seguro que desea salir ?", MsgBoxStyle.YesNo)
             If respuesta = MsgBoxResult.Yes Then
-                addDepartmentWindow.Close()
+                _newView.Close()
             Else
             End If
         End Sub
 
-        Public Sub CreateNewDepartment()
-            CreateDepartment()
+        Sub New(ByRef newView As AddDepartment)
+            Me._newView = newView
         End Sub
 
-        Private Sub CreateDepartment()
+        Sub New(ByRef newView As AddDepartment, Department As Department)
+            Me._newView = newView
+            departEdit = Department
+            If Department Is Nothing Then
+                Exit Sub
+            End If
+            _idDepartment = departEdit.DepartmentID
+            _Name = departEdit.Name
+            _Budget = departEdit.Budget
+            _date = departEdit.StartDate
+            _Admin = departEdit.Administrator
+        End Sub
+
+        Sub AcceptExecute()
             Try
-                Dim departments As IQueryable(Of Department) = DataContext.DBEntities.Departments
-                _department.StartDate = Date.Today
-                For Each element In departments
-                    _department.DepartmentID = Integer.Parse(element.DepartmentID.ToString) + 1
-                Next
-                DataContext.DBEntities.Departments.Add(_department)
-                DataContext.DBEntities.SaveChanges()
-                newWindowDepartment.Close()
+                If departEdit Is Nothing Then
+                    DataContext.DBEntities.Departments.Add(_Department)
+                    DataContext.DBEntities.SaveChanges()
+                    MessageBox.Show("El nuevo departamento se ha agregado exitosamente", MsgBoxStyle.Information)
+                    _newView.Close()
+                Else
+                    Dim Department As Department = (From item In DataContext.DBEntities.Departments Where item.DepartmentID = _Department.DepartmentID
+                                                    Select item).FirstOrDefault()
+                    Department.DepartmentID = _idDepartment
+                    Department.Name = _Name
+                    Department.Budget = _Budget
+                    Department.StartDate = _Date
+                    Department.Administrator = _Admin
+                    DataContext.DBEntities.SaveChanges()
+                    MessageBox.Show("El nuevo departamento se ha editado exitosamente", MsgBoxStyle.Information)
+                    _newView.Close()
+                End If
             Catch ex As Exception
-                MessageBox.Show("No se ha podido ingresar el departamentp", MsgBoxStyle.Critical)
+                MessageBox.Show("No se puede agregar el departamento")
             End Try
         End Sub
-        Sub New(ByRef view As AddDepartment)
-            Me.newWindowDepartment = view
-            newWindowDepartment.Height = 350
-            newWindowDepartment.Width = 350
-        End Sub
 
+        Sub CancelExecute()
+            _newView.Close()
+        End Sub
     End Class
 End Namespace
 
