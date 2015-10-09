@@ -3,15 +3,22 @@ Imports BusinessLogic.Services.Implementations
 Imports BusinessLogic.Services.Interfaces
 Imports System.Collections.ObjectModel
 Imports Modules.OnlineCourses.View
+Imports BusinessObjects.Helpers
+
 
 Namespace Modules.OnlineCourses.ViewModel
     Public Class OnlineCoursesViewModel
         Inherits ViewModelBase
 
+        Private _courses As ObservableCollection(Of OnlineCourse)
         Private _onlinecourse As ObservableCollection(Of OnlineCourse)
         Private dataAccess As IOnlineCourseService
+        Private _selected As OnlineCourse
         Private _icomButtonExitCommand As ICommand
         Private _icomButtonNewWindowCommand As ICommand
+        Private _icomButtonEditCommand As ICommand
+        Private _icomButtonDeleteCommand As ICommand
+        Private Shadows _newWindow As AddOnlineCourse
 
         Public Property OnlineCourses As ObservableCollection(Of OnlineCourse)
             Get
@@ -27,9 +34,8 @@ Namespace Modules.OnlineCourses.ViewModel
             Return Me.dataAccess.GetAllOnlineCourses
         End Function
 
-        Sub New()
-            'Initialize property variable of onlinecourses
-            Me._onlinecourse = New ObservableCollection(Of OnlineCourse)
+        Sub actualizarLista()
+            Me._onlinecourse.Clear()
             ' Register service with ServiceLocator
             ServiceLocator.RegisterService(Of IOnlineCourseService)(New OnlineCourseService)
             ' Initialize dataAccess from service
@@ -40,23 +46,76 @@ Namespace Modules.OnlineCourses.ViewModel
             Next
         End Sub
 
+        Sub New()
+            Me._onlinecourse = New ObservableCollection(Of OnlineCourse)
+            actualizarLista()
+        End Sub
+
         Public ReadOnly Property ButtonShowNewWindow()
             Get
                 If Me._icomButtonNewWindowCommand Is Nothing Then
-                    Me._icomButtonNewWindowCommand = New RelayCommand(AddressOf VentanaDiag)
+                    Me._icomButtonNewWindowCommand = New RelayCommand(AddressOf CreateOnlineCourseDB)
                 End If
                 Return Me._icomButtonNewWindowCommand
             End Get
         End Property
-        Private Sub VentanaDiag()
-            Dim ventanaNueva As New AddOnlineCourse
-            ventanaNueva.Height = 350
-            ventanaNueva.Width = 350
-            ventanaNueva.ResizeMode = ResizeMode.NoResize
-            ventanaNueva.VerticalAlignment = VerticalAlignment.Center
-            ventanaNueva.HorizontalAlignment = HorizontalAlignment.Center
 
-            ventanaNueva.ShowDialog()
+        Public ReadOnly Property EditButtonCommand As ICommand
+            Get
+                If Me._icomButtonEditCommand Is Nothing Then
+                    Me._icomButtonEditCommand = New RelayCommand(AddressOf EditOnlineCourseDB)
+                End If
+                Return Me._icomButtonEditCommand
+            End Get
+        End Property
+
+        Public ReadOnly Property DeleteButtonCommand As ICommand
+            Get
+                If Me._icomButtonDeleteCommand Is Nothing Then
+                    Me._icomButtonDeleteCommand = New RelayCommand(AddressOf DeleteOnlineCourseDB)
+                End If
+                Return Me._icomButtonDeleteCommand
+            End Get
+        End Property
+        Public Property Selected As OnlineCourse
+            Get
+                Return _selected
+            End Get
+            Set(value As OnlineCourse)
+                _selected = value
+            End Set
+        End Property
+
+        Sub CreateOnlineCourseDB()
+            Using Context As New SchoolEntities
+                _newWindow = New AddOnlineCourse
+                _newWindow.ShowDialog()
+                actualizarLista()
+            End Using
+        End Sub
+
+        Sub EditOnlineCourseDB()
+            If Selected IsNot Nothing Then
+                Using Context As New SchoolEntities
+                    _newWindow = New AddOnlineCourse(Selected)
+                    _newWindow.ShowDialog()
+                    actualizarLista()
+                End Using
+            Else
+                MessageBox.Show("Por favor, seleccione un curso en linea")
+            End If
+        End Sub
+
+        Sub DeleteOnlineCourseDB()
+            If Selected IsNot Nothing Then
+                DataContext.DBEntities.OnlineCourses.Remove((From item In DataContext.DBEntities.OnlineCourses
+                                                             Where item.CourseID = Selected.CourseID
+                                                             Select item).FirstOrDefault)
+                DataContext.DBEntities.SaveChanges()
+                actualizarLista()
+            Else
+                MessageBox.Show("Por favor, seleccione un curso en linea")
+            End If
         End Sub
 
     End Class

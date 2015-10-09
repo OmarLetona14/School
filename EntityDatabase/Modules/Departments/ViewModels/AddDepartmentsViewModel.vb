@@ -102,10 +102,14 @@ Namespace Modules.Departments.ViewModels
 
         Sub New(ByRef newView As AddDepartment)
             Me._newView = newView
+            _newView.Height = 350
+            _newView.Width = 350
         End Sub
 
         Sub New(ByRef newView As AddDepartment, Department As Department)
             Me._newView = newView
+            _newView.Height = 350
+            _newView.Width = 350
             departEdit = Department
             If Department Is Nothing Then
                 Exit Sub
