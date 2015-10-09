@@ -5,16 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="350">
-    <Grid>
+    <Grid x:Name="Grid">
         <Label x:Name="lblShowCourse" Content="Course" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Width="70"/>
-        <ComboBox SelectedValuePath="idCourse" SelectedValue="{Binding Courses}" ItemsSource="{Binding Courses}" DisplayMemberPath="Courses.Name" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="140" Height="20" />
+        <ComboBox SelectedItem="{Binding SelectedCourse}" ItemsSource="{Binding Courses}" DisplayMemberPath="Title"  HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="140" Height="20" />
         <Label x:Name="lblShowLocation" Content="Location" HorizontalAlignment="Left" Margin="50,70,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtLocation" Text="" HorizontalAlignment="Left" Margin="130,70,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="txtLocation" Text="{Binding Location}" HorizontalAlignment="Left" Margin="130,70,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="lblShowDays" Content="Days" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtDay" Text="" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="txtDay" Text="{Binding Days}" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Width="140"/>
         <Label x:Name="lblShowTime" Content="Time" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="txtTime" Text="" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="140"/>
-        <Button Command="{Binding ButtonCreateOnsiteCourse}" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="txtTime" Content="{Binding Time}" HorizontalAlignment="Left" Margin="130,150,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button Command="{Binding ButtonCreateNewOnsiteCouse}" Content="Aceptar" HorizontalAlignment="Left" Margin="120,270,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Command="{Binding ButtonExit}" Content="Cancelar" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

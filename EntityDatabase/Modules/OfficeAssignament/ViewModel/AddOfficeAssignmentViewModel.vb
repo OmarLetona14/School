@@ -12,7 +12,7 @@ Namespace Modules.OfficeAssignament.ViewModel
         Inherits ViewModelBase
 
 
-        Public _newWindow As New AddOfficeAssignment
+        Public _newWindow As AddOfficeAssignment
         Private _idInstructor As Integer
         Private _location As String
         Private _timeStamp As Byte()

@@ -11,7 +11,7 @@
             <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
         <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
-                  ItemsSource="{Binding OnsiteCourses}" Height="284" Width="512"
+                  ItemsSource="{Binding OnsiteCourses}" Height="284" Width="512" SelectedItem="{Binding SelectedCourse}"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="CourseColum" Binding="{Binding Path=Course.Title}" Header="Course" Width="Auto"/>
@@ -22,8 +22,8 @@
         </DataGrid>
         <Grid  HorizontalAlignment="Left" Height="135" Grid.Row="1"  VerticalAlignment="Top"  Width="640" Margin="0,52,0,0">
             <Button Command="{Binding ButtonShowNewWindow }"  Content="Nuevo" HorizontalAlignment="Left" Margin="232,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-            <Button Content="Editar" HorizontalAlignment="Left" Margin="359,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
-            <Button Content="Cancelar" Command="{Binding ExitEditor}" Margin="488,71,27,0" VerticalAlignment="Top" Height="40"/>
+            <Button Command="{Binding EditButtonCommand}" Content="Editar" HorizontalAlignment="Left" Margin="359,71,0,0" VerticalAlignment="Top" Width="100" Height="40"/>
+            <Button Content="Eliminar" Command="{Binding DeleteButton}" Margin="488,71,27,0" VerticalAlignment="Top" Height="40"/>
         </Grid >
     </Grid>
 </UserControl>

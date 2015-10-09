@@ -67,12 +67,8 @@ Namespace Modules.OfficeAssignament.ViewModel
             actualizarLista()
         End Sub
 
-
-
         Sub actualizarLista()
             Me._officeassignaments.Clear()
-            'Initialize property variable of persons
-            Me._officeassignaments = New ObservableCollection(Of Global.OfficeAssignment)
             ' Register service with ServiceLocator
             ServiceLocator.RegisterService(Of IOfficeAssignamentService)(New OfficeAssignmentService)
             ' Initialize dataAccess from service
